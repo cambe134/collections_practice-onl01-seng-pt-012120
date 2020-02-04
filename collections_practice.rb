@@ -1,71 +1,83 @@
-def sort_array_asc(array)
+def sort_array_asc (array)
   array.sort
 end
 
-sort_array_asc([25, 7, 1])
 
-def sort_array_desc(array)
-  array.sort do | left, right|
-    right <=> left
-  end
+
+def sort_array_desc (array)
+  array.sort {|x,y| y <=> x }
 end
 
-sort_array_desc([25, 7, 14])
 
-def sort_array_char_count(array)
-  array.sort do |left, right|
-    left.length <=> right.length
-  end
-end
 
-sort_array_char_count(["dogs", "cat", "Horses"])
-
-def swap_elements(array)
+def swap_elements (array)
   array[1], array[2] = array[2], array[1]
   array
 end
 
-swap_elements(["blake", "ashley", "scott"])
 
-def reverse_array(array)
+
+def reverse_array (array)
   array.reverse
 end
 
-reverse_array(["blake", "ashley", "scott"])
 
-def kesha_maker(array)
-  array.each do |item|
-    item[2] = "$"
+
+def kesha_maker (array)
+  array.collect do |element|
+    element[2] = "$"
+    element
   end
 end
 
-kesha_maker(["blake", "ashley", "scott"])
 
-def find_a(array)
-  array.find_all do |word|
-    word[0] == "a"
+
+def greater_and_less_than_10 (array)
+  hash = {
+    "greater_than_10" => [],
+    "less_than_10" => []
+  }
+  array.each do |number|
+    if number > 10
+      hash["greater_than_10"] << number
+    else
+      hash["less_than_10"] << number
+    end
   end
-
-
+  hash
 end
 
-find_a(["apple", "orange", "pear", "avis", "arlo", "ascot" ])
 
-def sum_array(array)
-  sum = 0
-  array.each do |num|
-    sum+=num
+
+def find_winners (hash)
+  winners = []
+  hash.each do |name, status|
+    winners << name if status == "winner"
   end
-  sum
+  winners
 end
 
+
+
+def find_a (array)
+  array.select do |word|
+    word.chr == "a"
+  end
 end
 
-sum_array([11,4,7,8,9,100,134]) #273
 
-def add_s(array)
-  array.collect do |word|
-    if array[1] == word
+
+def sum_array (array)
+  array.inject do |sum, num|
+    sum + num
+  end
+end
+
+
+
+def add_s (array)
+  array.collect.with_index do |word, index|
+    if index == 1
       word
     else
       word + "s"
@@ -73,4 +85,35 @@ def add_s(array)
   end
 end
 
-add_s(["hand","feet", "knee", "table"])
+
+
+def count_words (words)
+  story_count = Hash.new
+
+  words.split.each do |word|
+    if story_count.include?(word)
+      story_count[word] = story_count[word] + 1
+    else
+      story_count[word] = 1
+    end
+  end
+
+  story_count
+end
+
+
+
+def organize_songs_by_artist (tracks)
+  hash = {}
+  tracks.each do |name|
+    artist = name.split(" - ")[0]
+    trackname = name.split(" - ")[1]
+
+    if hash.include?(artist)
+      hash[artist] << trackname
+    else
+      hash[artist] = [] << trackname
+    end
+  end
+  hash
+end 
