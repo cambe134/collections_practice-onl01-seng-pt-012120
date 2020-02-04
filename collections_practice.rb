@@ -3,11 +3,9 @@ def sort_array_asc (array)
 end
 
 
-
 def sort_array_desc (array)
   array.sort {|x,y| y <=> x }
 end
-
 
 
 def swap_elements (array)
@@ -16,11 +14,9 @@ def swap_elements (array)
 end
 
 
-
 def reverse_array (array)
   array.reverse
 end
-
 
 
 def kesha_maker (array)
@@ -29,7 +25,6 @@ def kesha_maker (array)
     element
   end
 end
-
 
 
 def greater_and_less_than_10 (array)
@@ -48,7 +43,6 @@ def greater_and_less_than_10 (array)
 end
 
 
-
 def find_winners (hash)
   winners = []
   hash.each do |name, status|
@@ -58,7 +52,6 @@ def find_winners (hash)
 end
 
 
-
 def find_a (array)
   array.select do |word|
     word.chr == "a"
@@ -66,13 +59,11 @@ def find_a (array)
 end
 
 
-
 def sum_array (array)
   array.inject do |sum, num|
     sum + num
   end
 end
-
 
 
 def add_s (array)
@@ -84,7 +75,6 @@ def add_s (array)
     end
   end
 end
-
 
 
 def count_words (words)
@@ -102,7 +92,6 @@ def count_words (words)
 end
 
 
-
 def organize_songs_by_artist (tracks)
   hash = {}
   tracks.each do |name|
@@ -116,4 +105,4 @@ def organize_songs_by_artist (tracks)
     end
   end
   hash
-end 
+end
